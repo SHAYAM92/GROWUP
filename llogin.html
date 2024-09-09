@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up</title>
+    <link rel="stylesheet" href="llogin.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-toggle">
+                <button id="login-btn" class="active">Login</button>
+                <button id="signup-btn">Sign Up</button>
+            </div>
+
+            <form id="login-form" class="form">
+                <h2>Login</h2>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p>Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a></p>
+            </form>
+
+            <form id="signup-form" class="form hidden">
+                <h2>Sign Up</h2>
+                <input type="text" placeholder="Username" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-btn').addEventListener('click', function() {
+            document.getElementById('login-form').classList.remove('hidden');
+            document.getElementById('signup-form').classList.add('hidden');
+            document.getElementById('login-btn').classList.add('active');
+            document.getElementById('signup-btn').classList.remove('active');
+        });
+
+        document.getElementById('signup-btn').addEventListener('click', function() {
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('signup-form').classList.remove('hidden');
+            document.getElementById('signup-btn').classList.add('active');
+            document.getElementById('login-btn').classList.remove('active');
+        });
+
+        document.getElementById('switch-to-signup').addEventListener('click', function() {
+            document.getElementById('signup-btn').click();
+        });
+
+        document.getElementById('switch-to-login').addEventListener('click', function() {
+            document.getElementById('login-btn').click();
+        });
+    </script>
+</body>
+</html>

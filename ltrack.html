@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Order</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="ltrack.css">
+</head>
+<body>
+    <header>
+        <h1>Track Your Order</h1>
+    </header>
+
+    <section class="tracking-form">
+        <h2>Enter Your Order ID</h2>
+        <form>
+            <input type="text" id="order-id" placeholder="Enter Order ID" required>
+            <button type="button" onclick="trackOrder()">Track Order</button>
+        </form>
+    </section>
+
+    <section class="map-section">
+        <h2>Delivery Location</h2>
+        <div id="map"></div>
+    </section>
+
+    <section class="timer-section">
+        <h2>Elapsed Time</h2>
+        <div id="timer">00:00:00</div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Fresh Lunch Delivery. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        let map;
+        let marker;
+        let startTime;
+        let timerInterval;
+
+        window.onload = function() {
+            map = L.map('map').setView([51.505, -0.09], 13); // Default location (London)
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+
+            marker = L.marker([51.505, -0.09]).addTo(map)
+                .bindPopup('Your Lunch is on the Way!')
+                .openPopup();
+
+            startTime = new Date();
+            startTimer();
+        };
+
+        function startTimer() {
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function updateTimer() {
+            const now = new Date();
+            const elapsedTime = new Date(now - startTime);
+            const hours = String(elapsedTime.getUTCHours()).padStart(2, '0');
+            const minutes = String(elapsedTime.getUTCMinutes()).padStart(2, '0');
+            const seconds = String(elapsedTime.getUTCSeconds()).padStart(2, '0');
+            document.getElementById('timer').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        function trackOrder() {
+            const orderId = document.getElementById('order-id').value;
+            if (orderId) {
+                // Simulate location change for demo purposes
+                const newLat = 51.505 + (Math.random() - 0.5) * 0.01;
+                const newLng = -0.09 + (Math.random() - 0.5) * 0.01;
+                marker.setLatLng([newLat, newLng])
+                    .bindPopup('Updated Location')
+                    .openPopup();
+                map.setView([newLat, newLng], 13);
+            } else {
+                alert('Please enter an Order ID.');
+            }
+        }
+    </script>
+</body>
+</html>

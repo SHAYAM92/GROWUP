@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote for Tomorrow's Menu</title>
+    <link rel="stylesheet" href="vote.css">
+</head>
+<body>
+    <header>
+        <h1>Vote for Tomorrow's Menu</h1>
+    </header>
+
+    <section class="menu-vote">
+        <h2>Select Your Favorite Dishes</h2>
+        <div class="menu-item">
+            <input type="checkbox" id="item1" class="food-item" onchange="checkSelection()">
+            <label for="item1">
+                <img src="meal1.jpg" alt="Meal 1">
+                <h3>Meal 1</h3>
+            </label>
+        </div>
+        <div class="menu-item">
+            <input type="checkbox" id="item2" class="food-item" onchange="checkSelection()">
+            <label for="item2">
+                <img src="meal2.jpg" alt="Meal 2">
+                <h3>Meal 2</h3>
+            </label>
+        </div>
+        <div class="menu-item">
+            <input type="checkbox" id="item3" class="food-item" onchange="checkSelection()">
+            <label for="item3">
+                <img src="meal3.jpg" alt="Meal 3">
+                <h3>Meal 3</h3>
+            </label>
+        </div>
+        <!-- Add more menu items as needed -->
+        <button id="submit-button" disabled onclick="submitVote()">Submit Vote</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Fresh Lunch Delivery. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function checkSelection() {
+            const checkboxes = document.querySelectorAll('.food-item');
+            const submitButton = document.getElementById('submit-button');
+            const isSelected = Array.from(checkboxes).some(checkbox => checkbox.checked);
+            submitButton.disabled = !isSelected;
+        }
+
+        function submitVote() {
+            alert("Thank you for voting!");
+            // Add logic to submit the vote to the server
+        }
+    </script>
+</body>
+</html>
+

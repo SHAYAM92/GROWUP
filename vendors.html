@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Vendors</title>
+    <link rel="stylesheet" href="vendors.css">
+</head>
+<body>
+    <header>
+        <h1>Our Vendors</h1>
+    </header>
+
+    <section class="vendor-list">
+        <div class="vendor-card">
+            <img src="vendor1.jpg" alt="Vendor 1">
+            <h3>Vendor 1</h3>
+            <p>Specializes in vegetarian dishes.</p>
+            <button onclick="viewVendor('Vendor 1')">View More</button>
+        </div>
+        <div class="vendor-card">
+            <img src="vendor2.jpg" alt="Vendor 2">
+            <h3>Vendor 2</h3>
+            <p>Known for quick delivery and hot meals.</p>
+            <button onclick="viewVendor('Vendor 2')">View More</button>
+        </div>
+        <div class="vendor-card">
+            <img src="vendor3.jpg" alt="Vendor 3">
+            <h3>Vendor 3</h3>
+            <p>Offers a variety of cuisines.</p>
+            <button onclick="viewVendor('Vendor 3')">View More</button>
+        </div>
+        <!-- Add more vendor cards as needed -->
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Fresh Lunch Delivery. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function viewVendor(vendorName) {
+            alert(`Redirecting to ${vendorName}'s page...`);
+            // Implement the redirection logic to the vendor's specific page
+        }
+    </script>
+</body>
+</html>
